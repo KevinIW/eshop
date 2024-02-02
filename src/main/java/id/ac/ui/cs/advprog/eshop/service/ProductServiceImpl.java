@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -28,6 +29,16 @@ public class ProductServiceImpl implements ProductService{
         productIterator.forEachRemaining(allProduct :: add);
         return allProduct;
 
+    }
+
+    @Override
+    public void deleteById(String id) {
+        productRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteByProductName(String productName) {
+        productRepository.deleteByProductName(productName);
     }
 
 
