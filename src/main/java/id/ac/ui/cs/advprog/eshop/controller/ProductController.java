@@ -38,4 +38,29 @@ public class ProductController {
         return "productList";
 
     }
+
+    @GetMapping("/edit/{productId}")
+    public String editProductPage(@PathVariable Long productId, Model model) {
+        Product product = service.findById(productId);
+
+        if (product != null) {
+            model.addAttribute("product", product);
+            return "editProduct";
+        } else {
+            // Handle the case where the product with the given ID is not found
+            return "redirect:/product/list";
+        }
+    }
+
+    @PostMapping("/edit/{productId}")
+    public String editProductPost(@PathVariable Long productId,
+                                  @ModelAttribute Product updatedProduct,
+                                  Model model) {
+        // Set the ID of the updated product to match the original product
+        updatedProduct.setId(productId);
+
+        service.update(updatedProduct);
+
+        return "redirect:/product/list";
+    }
 }
