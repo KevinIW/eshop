@@ -39,15 +39,23 @@ public class ProductController {
 
     }
 
-    @GetMapping("/delete/{productId}")
-    public String deleteProduct(@PathVariable String productId) {
-        service.deleteById(productId);
-        return "redirect:list";
+    @GetMapping("/delete")
+    public String deleteProductPage(Model model) {
+        // You can use a form or any other means to get the product name for deletion
+        model.addAttribute("productName", "");
+        return "deleteProduct";
     }
 
-    @GetMapping("/deleteByName/{productName}")
-    public String deleteProductByName(@PathVariable String productName) {
-        service.deleteByProductName(productName);
-        return "redirect:list";
+    @PostMapping("/delete")
+    public String deleteProductPost(@RequestParam String productName, Model model) {
+        boolean deleted = service.deleteByName(productName);
+        if (deleted) {
+            return "redirect:list";
+        } else {
+            model.addAttribute("error", "Product not found");
+            return "deleteProduct";
+        }
     }
+
+
 }

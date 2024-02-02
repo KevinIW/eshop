@@ -8,10 +8,10 @@ public interface ProductService {
     public Product create(Product product);
     public List<Product> findAll();
 
+    public boolean deleteByName(String productName);
 
 
 
-    void deleteById(String id);  // Add method to delete by ID
 
-    void deleteByProductName(String productName);  // Add method to delete by product name
+
 }

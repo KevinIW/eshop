@@ -23,11 +23,15 @@ public class ProductRepository {
         return productData.iterator();
     }
 
-    public void deleteById(String id) {
-        productData.removeIf(product -> product.getProductId().equals(id));
-    }
-
-    public void deleteByProductName(String productName) {
-        productData.removeIf(product -> product.getProductName().equals(productName));
+    public boolean deleteByName(String productName) {
+        Iterator<Product> iterator = productData.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getProductName().equals(productName)) {
+                iterator.remove();
+                return true; // Product deleted successfully
+            }
+        }
+        return false; // Product not found
     }
 }
