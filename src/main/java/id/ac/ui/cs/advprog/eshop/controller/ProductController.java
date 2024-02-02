@@ -28,7 +28,7 @@ public class ProductController {
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product,Model model){
         service.create(product);
-        return "redirect::list";
+        return "redirect:list";
     }
 
     @GetMapping("/list")
@@ -39,28 +39,22 @@ public class ProductController {
 
     }
 
-    @GetMapping("/edit/{productId}")
-    public String editProductPage(@PathVariable Long productId, Model model) {
-        Product product = service.findById(productId);
 
-        if (product != null) {
-            model.addAttribute("product", product);
-            return "editProduct";
-        } else {
-            // Handle the case where the product with the given ID is not found
-            return "redirect:/product/list";
-        }
+    @GetMapping("/edit")
+    public String editProductPage(Model model) {
+        // You can use a form or any other means to get the product details for editing
+        model.addAttribute("product", new Product());
+        return "editProduct";
     }
 
-    @PostMapping("/edit/{productId}")
-    public String editProductPost(@PathVariable Long productId,
-                                  @ModelAttribute Product updatedProduct,
-                                  Model model) {
-        // Set the ID of the updated product to match the original product
-        updatedProduct.setId(productId);
-
-        service.update(updatedProduct);
-
-        return "redirect:/product/list";
+    @PostMapping("/edit")
+    public String editProductPost(@ModelAttribute Product updatedProduct, Model model) {
+        boolean updated = service.updateByName(updatedProduct.getProductName(), updatedProduct);
+        if (updated) {
+            return "redirect:list";
+        } else {
+            model.addAttribute("error", "Product not found");
+            return "editProduct";
+        }
     }
 }

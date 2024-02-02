@@ -5,43 +5,34 @@ import org.springframework.stereotype.Repository;
 
 
 
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+import java.util.ListIterator;
 
 @Repository
 public class ProductRepository {
 
-    private List<Product> productData = new ArrayList<>();
-    private long nextId = 1;
+    private List <Product> productData = new ArrayList<>();
 
-    public Product create(Product product) {
-        product.setId(nextId++);
+    public Product create (Product product) {
         productData.add(product);
         return product;
     }
 
-    public Iterator<Product> findAll() {
+    public Iterator<Product> findAll(){
         return productData.iterator();
     }
 
-    public Optional<Product> findById(Long id) {
-        return productData.stream().filter(product -> product.getId().equals(id)).findFirst();
-    }
-
-    public Product save(Product updatedProduct) {
-        Optional<Product> existingProduct = findById(updatedProduct.getId());
-
-        if (existingProduct.isPresent()) {
-            int index = productData.indexOf(existingProduct.get());
-            productData.set(index, updatedProduct);
-            return updatedProduct;
-        } else {
-            // If the product with the given ID doesn't exist, you may choose to throw an exception or handle it accordingly.
-            // Here, we'll just return null for simplicity.
-            return null;
+    public boolean updateByName(String productName, Product updatedProduct) {
+        ListIterator<Product> iterator = productData.listIterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getProductName().equals(productName)) {
+                iterator.set(updatedProduct);
+                return true; // Product updated successfully
+            }
         }
+        return false; // Product not found
     }
 }
