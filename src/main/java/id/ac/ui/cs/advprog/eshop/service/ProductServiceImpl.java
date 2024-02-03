@@ -30,6 +30,15 @@ public class ProductServiceImpl implements ProductService{
 
     }
 
+    @Override
+    public boolean updateByName(String productName, Product updatedProduct) {
+        return productRepository.updateByName(productName, updatedProduct);
+    }
+
+    @Override
+    public boolean deleteByName(String productName) {
+        return productRepository.deleteByName(productName);
+    }
 
 
 
