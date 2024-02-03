@@ -56,7 +56,7 @@ public class CreateProductFunctionalTest {
         WebElement newProductRow = driver.findElement(By.xpath("//td[text()='New Product']"));
         assertNotNull(newProductRow);
 
-        // Optional: You can add more assertions based on your application's behavior
+
     }
 
 }
