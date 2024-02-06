@@ -20,14 +20,14 @@ malah dipisah
 Refleksi 2 :
 
 <br>
-    Saya merasa setelah mengerjakan unit test diatas adalah kodingan yang saya tulis jadi tidak ada bug
-karena sudah banyak di test sehingga ketika user memasukkan beberapa input tidak akan terjadi error kecuali
+    Saya merasa setelah mengerjakan unit test diatas adalah kodingan yang saya tulis jadi tidak ada bug.
+Karena sudah banyak di test sehingga ketika user memasukkan beberapa input tidak akan terjadi error kecuali
 input yang diberikan seperti string atau character pada product quantity. Untuk memastikan program diatas
 dapat berjalan dengan baik setidaknya ada banyak input yang dicobakan saat testing. 
-    Jika memiliki code coverage 100 belum tentu bebas tanpa bug dan error karena ada test yang bisa saaj terlewatkan
+    Jika memiliki code coverage 100 belum tentu bebas tanpa bug dan error karena ada test yang bisa sajs terlewatkan
 atau ada test yang kualitasnya buruk. Menurut saya, jika akan mengurangi kualitas kode karena ada beberapa hal yang buruk.
 Seperti adanya duplikasi kode, beberapa nama variable yang kurang meaningful dan karena ada banyak kode menjadikan
-kode tersebut berpotensi banyak bug.
+kode tersebut berpotensi banyak bug.Untuk itu masi ada beberapa perbaikan yang dapat dikerjakan.
     
 
 
