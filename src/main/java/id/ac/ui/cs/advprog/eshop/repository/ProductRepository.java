@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 @Repository
 public class ProductRepository {
@@ -21,5 +22,29 @@ public class ProductRepository {
 
     public Iterator<Product> findAll(){
         return productData.iterator();
+    }
+
+    public boolean updateByName(String productName, Product updatedProduct) {
+        ListIterator<Product> iterator = productData.listIterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getProductName().equals(productName)) {
+                iterator.set(updatedProduct);
+                return true; // Product updated successfully
+            }
+        }
+        return false; // Product not found
+    }
+
+    public boolean deleteByName(String productName) {
+        Iterator<Product> iterator = productData.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getProductName().equals(productName)) {
+                iterator.remove();
+                return true; // Product deleted successfully
+            }
+        }
+        return false; // Product not found
     }
 }
