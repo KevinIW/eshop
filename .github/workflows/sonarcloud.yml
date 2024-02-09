@@ -47,6 +47,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}  # Needed to get PR information
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
         with:
-          args:
-            -Dsonar.projectKey=eshop  # Replace <YOUR_PROJECT_KEY> with your project's unique key from SonarCloud
-            -Dsonar.organization=keviniw # Replace <YOUR_ORGANIZATION_KEY> with your organization's unique key from SonarCloud
+          args: >
+            -Dsonar.projectKey=eshop
+            -Dsonar.organization=keviniw
