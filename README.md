@@ -36,5 +36,29 @@ kode tersebut berpotensi banyak bug.Untuk itu masi ada beberapa perbaikan yang d
 
 </details>
 
+<details>
+<summary> Modul 2</summary>
+
+1. List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them.
+
+Ada beberapa code yang saya tambahkan untuk memperbaiki code coveragenya. 
+Pertama dalam  code coverage saya menambahkan unit test pada controller,model, repo, dan service.
+Setelah ditambahkan kode saya menjadi 97%. Semua kondisi yang bisa terjadi dalam repo saya test sehingga code saya
+bisa bebas dari bug. Lalu untuk quality lainnya saya tambahkan SonarCLoud unutk mengscan code saya sehingga saya tau ada
+kekurangan dimana. Lalu juga saya tambahkan CodeQl untuk memperbaiki lagi kode saya. Sebelumnya workflow yang ditambahkan dalam bidang security
+score card sudah menampakan beberapa kekurangan yang ada lalu saya memperbaiki beberapa kekurangan itu.
+
+
+2. Look at your CI/CD workflows (GitHub)/pipelines (GitLab). Do you think the current implementation has met the definition of Continuous Integration and Continuous Deployment? Explain the reasons (minimum 3 sentences)!
+
+Menurut saya kode workflow saya sudah mengimplementasikan CI/CD. Pertama dari CI, di Workflow ci.yml sudah berjalan dengan benar dan terus-terusan. 
+Kedua dalam CD, sudah bisa di deploy dan berjalan dengan baik dan bisa di update setiap melakukan push ke repo. 
+Pada ci.yml dilakukan terus terusan testing untuk melihat apakah kode nya berjalan dengan benar. 
+Lalu pada scorecard.yml dilihat dalam segi security apakah kode repositorynya sudah secure dari ancaman luar.
+Lalu dengan sonarcloud.yml untuk melihat apakah kode nya ada bug di setiap push.
+Lalu ada codeql.yml untuk mengintegrasikan CI/CD setiap push.
+
+</details>
+
 
 
