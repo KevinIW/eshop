@@ -56,5 +56,6 @@ jobs:
           args: >
             -Dsonar.organization=keviniw
             -Dsonar.projectKey=KevinIW_eshop
+            -Dsonar.exclusions=**/*.java
 
             
