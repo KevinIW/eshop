@@ -47,4 +47,4 @@ jobs:
         with:
           args: >
             -Dsonar.organization=keviniw
-            -Dsonar.projectKey=keviniw:eshop
+            -Dsonar.projectKey=KevinIW_eshop
