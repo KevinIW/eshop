@@ -1,39 +1,14 @@
-# Use a base image with JDK and Gradle installed
-FROM gradle:7.3.3-jdk17 AS builder
+FROM docker.io/library/eclipse-temurin:21-jdk-alpine AS builder
 
-# Set the working directory in the container
-WORKDIR /src/advshop
+WORKDIR /app
+COPY . .
+RUN chmod +x ./gradlew
+RUN ./gradlew clean bootJar
 
-# Copy Gradle files
-COPY build.gradle settings.gradle ./
+FROM docker.io/library/eclipse-temurin:21-jdk-alpine AS runner
 
-# Copy the source code
-COPY src ./src
+WORKDIR /app
+COPY --from=builder /app/build/libs/*.jar app.jar
 
-# Build the application
-RUN gradle clean bootJar
-
-# Use a lightweight JRE image for the application runtime
-FROM adoptopenjdk:17-jre-hotspot
-
-ARG USER_NAME=advshop
-ARG USER_UID=1000
-ARG USER_GID=${USER_UID}
-
-# Create a non-root user
-RUN addgroup -g ${USER_GID} ${USER_NAME} \
-    && adduser -h /opt/advshop -D -u ${USER_UID} -G ${USER_NAME} ${USER_NAME}
-
-USER ${USER_NAME}
-
-# Set the working directory
-WORKDIR /opt/advshop
-
-# Copy the JAR file built in the previous stage
-COPY --from=builder --chown=${USER_UID}:${USER_GID} /src/advshop/build/libs/*.jar app.jar
-
-# Expose the port the application runs on
-EXPOSE 8080
-
-# Command to run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java"]
+CMD ["-jar", "app.jar"]
