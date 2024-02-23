@@ -10,7 +10,7 @@ import java.util.UUID;
 public class CarRepository {
     static int id = 0;
 
-    private List<Car> carData = new ArrayList<>();
+     List<Car> carData = new ArrayList<>();
 
     public Car create(Car car) {
         if (car.getCarId() == null) {
@@ -35,17 +35,12 @@ public class CarRepository {
     }
 
     public Car update (String id, Car updateCar) {
-        for (int i = 0; i < carData.size(); i++) {
-            Car car = carData.get(i);
-            if (car.getCarId().equals(id)) {
-                car.setCarName(updateCar.getCarName());
-                car.setCarColor(updateCar.getCarColor());
-                car.setCarQuantity(updateCar.getCarQuantity());
-                return car;
-            }
-        }
-        return null;
+        UpdateCar update = new UpdateCar(this);
+        return update.updateCar(id, updateCar);
     }
 
-    public void delete (String id) { carData.removeIf(car -> car.getCarId().equals(id));}
+    public void delete (String id) {
+        DeleteCar deleteCar = new DeleteCar(this);
+        deleteCar.deleteCar(id);
+    }
 }

@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Service
-public class CarServiceImpl implements CarService {
+public class CarServiceImpl implements TotalService<Car> {
     @Autowired
     private CarRepository carRepository;
 
@@ -37,7 +37,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void deleteCarById (String carId) {
+    public void deleteTotalById (String carId) {
         carRepository.delete(carId);
     }
 }
