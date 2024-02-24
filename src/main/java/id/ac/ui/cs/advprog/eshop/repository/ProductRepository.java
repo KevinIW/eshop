@@ -13,7 +13,7 @@ import java.util.ListIterator;
 @Repository
 public class ProductRepository {
 
-    private List <Product> productData = new ArrayList<>();
+    List <Product> productData = new ArrayList<>();
 
     public Product create (Product product) {
         productData.add(product);
@@ -47,4 +47,24 @@ public class ProductRepository {
         }
         return false; // Product not found
     }
+
+    public Product findById(String id) {
+        for (Product product : productData) {
+            if (product.getProductId().equals(id)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    public Product update (String id, Product updateProduct) {
+        UpdateProduct update = new UpdateProduct(this);
+        return update.updateProduct(id, updateProduct);
+    }
+
+    public void delete (String id) {
+        DeleteProduct deleteProduct = new DeleteProduct(this);
+        deleteProduct.deleteProduct(id);
+    }
+
 }

@@ -61,4 +61,72 @@ Lalu ada codeql.yml untuk mengintegrasikan CI/CD setiap push.
 </details>
 
 
+<details>
+<summary> Modul 3</summary>
+
+Reflection :
+
+Pada tugas kali ini disuruh untuk mengaplikasikan SOLID principle.
+Di project ini saya mengaplikasikan yang pertama Single Responsibility Principle.
+ Saya membagi ProductController yang berisi class CarController. Lalu saya juga membagi
+semua method yang ada di repository sehingga setiap method terbagi tugasnya dalam 1 file contohnya ada di 
+UpdateCar.java dan DeleteCar.java. Selanjutnya ada Open-Close principle, Saya menerapkan hal itu pada bagian model
+sehingga mereka terbagi menjadi 2 class dan selanjutnya jika ingin ditambahkan attribute langsung bisa dilakukan
+tanpa mengubah module lain lagi. 
+
+Untuk prinsip selanjutnya yaitu Liskov Substituion Principle saya mengubah kode pada
+CarController yang awalnya merupakan sebuah subclass dari ProductController. CarController tidak harus
+menjadi subclass dari ProductController sehingga saya memecah CarController menjadi sebuah class yang tidak bergantung pada productcontroller.
+Sehingga Liskov terapply karena tidak ada subclass pada semua kode saya. Pada Interface Segregation, saya mengabungkan 2 interface yang ada 
+pada CarService dan ProductService. Saya gabungkan agar semua method menjadi lebih sederhana dan agar semua method
+tidak harus dipaksa dipakai saat misalkan membuat sebuah service baru.
+Pada Dependency Inversion, semua kode pada service sudah bergantung pada interface sehingga memenuhi principle tersebut.
+
+Single Responsibility Principle (SRP):
+
+Keuntungan: Memisahkan tanggung jawab setiap kelas membuat kode menjadi lebih mudah dipahami, dipelihara, dan diperluas.
+
+Kerugian: Kadang-kadang memisahkan tanggung jawab secara ekstrem dapat menghasilkan banyak kelas kecil yang sulit untuk dikelola dan dipelihara.
+
+Contoh: Pada Controller dipisah dan pada repository beberepa method dipisah
+
+Open/Closed Principle (OCP):
+
+Keuntungan: Memungkinkan perluasan fungsionalitas tanpa harus memodifikasi kode yang sudah ada, sehingga meningkatkan modularitas dan mengurangi risiko kesalahan saat melakukan perubahan.
+
+Kerugian: Penerapan OCP yang berlebihan dapat menghasilkan struktur kode yang terlalu kompleks dan sulit untuk dipahami.
+
+Contoh :Pada model bisa langsung ditambahkan attribute dan di interface juga bisa langsung ditambahkan
+
+Liskov Substitution Principle (LSP):
+
+Keuntungan: Meningkatkan fleksibilitas dan skalabilitas kode dengan memungkinkan penggantian objek superclass dengan objek subclass tanpa mengubah perilaku program.
+
+Kerugian: Penerapan yang tidak tepat dapat menghasilkan hierarki kelas yang rumit dan sulit untuk dimengerti.
+
+Contoh: pada subclass CarController tidak dijadikan subclass lagi
+
+Interface Segregation Principle (ISP):
+
+Keuntungan: Membuat antarmuka yang lebih bersih dan fokus, mengurangi ketergantungan pada metode yang tidak digunakan, dan memudahkan pemeliharaan dan pengembangan kode.
+
+Kerugian: Memecah antarmuka terlalu kecil dapat menghasilkan banyak antarmuka yang membingungkan dan sulit untuk dipelihara.
+
+Contoh: Interface yang digabung pada service
+
+Dependency Inversion Principle (DIP):
+
+Keuntungan: Mendorong ketergantungan yang longgar antara modul dengan memastikan bahwa modul-level tinggi bergantung pada abstraksi daripada implementasi konkret, yang memudahkan pengujian unit dan penyuntikan dependensi.
+
+Kerugian: Memperkenalkan lapisan abstraksi tambahan dapat meningkatkan kompleksitas kode, dan penerapan yang tidak tepat dapat mengakibatkan overhead yang tidak perlu.
+
+Contoh: semua service memakai interface
+
+    
+
+
+
+</details>
+
+
 
