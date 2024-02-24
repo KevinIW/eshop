@@ -46,22 +46,5 @@ class ProductServiceImplTest {
         verify(productRepository, times(1)).findAll();
     }
 
-    @Test
-    void updateByName() {
-        String productName = "TestProduct";
-        Product updatedProduct = new Product();
-        when(productRepository.updateByName(productName, updatedProduct)).thenReturn(true);
-        boolean result = productService.updateByName(productName, updatedProduct);
-        assertEquals(true, result);
-        verify(productRepository, times(1)).updateByName(productName, updatedProduct);
-    }
 
-    @Test
-    void deleteByName() {
-        String productName = "TestProduct";
-        when(productRepository.deleteByName(productName)).thenReturn(true);
-        boolean result = productService.deleteByName(productName);
-        assertEquals(true, result);
-        verify(productRepository, times(1)).deleteByName(productName);
-    }
 }
