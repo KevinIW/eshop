@@ -94,7 +94,7 @@ class OrderRepositoryTest {
         }
 
         List<Order> orderList = orderRepository.findAllByAuthor(
-                orders.get(1).getAutor());
+                orders.get(1).getAuthor());
         assertEquals(2, orderList.size());
     }
 
@@ -103,7 +103,7 @@ class OrderRepositoryTest {
         orderRepository.save(orders.get(1));
 
         List<Order> orderList = orderRepository.findAllByAuthor(
-                orders.get(1).getAutor().toLowerCase());
+                orders.get(1).getAuthor().toLowerCase());
         assertTrue(orderList.isEmpty());
     }
 }
