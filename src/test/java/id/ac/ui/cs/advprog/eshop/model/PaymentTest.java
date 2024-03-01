@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -24,9 +25,9 @@ public class PaymentTest {
         paymentData.put("cardType", "Visa");
         paymentData.put("amount", "100.00");
 
-        Payment payment = new Payment("123456789", "CreditCard", "SUCCESS", paymentData);
+        Payment payment = new Payment("123456789", "CreditCard",OrderStatus.SUCCESS.getValue(), paymentData);
 
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(OrderStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test

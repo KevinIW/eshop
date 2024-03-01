@@ -16,7 +16,7 @@ public class Payment {
     public Payment(String id, String method, Map<String, String> paymentData) {
         this.id = id;
         this.method = method;
-        this.status = OrderStatus.WAITING_PAYMENT.getValue();
+        this.status = OrderStatus.WAITING_PAYMENT.getValue(); //add enum
 
         if (paymentData.isEmpty()) {
             throw new IllegalArgumentException();
