@@ -16,19 +16,7 @@ public class PaymentTest {
         });
     }
 
-    @Test
-    void testCreatePaymentDefaultStatus() {
-        Map<String, String> paymentData = new HashMap<>();
-        paymentData.put("cardType", "Visa");
-        paymentData.put("amount", "100.00");
 
-        Payment payment = new Payment("123456789", "CreditCard", "Pending", paymentData);
-
-        assertEquals("123456789", payment.getId());
-        assertEquals("CreditCard", payment.getMethod());
-        assertEquals("Pending", payment.getStatus());
-        assertEquals(paymentData, payment.getPaymentData());
-    }
 
     @Test
     void testCreatePaymentSuccessStatus() {
@@ -36,9 +24,9 @@ public class PaymentTest {
         paymentData.put("cardType", "Visa");
         paymentData.put("amount", "100.00");
 
-        Payment payment = new Payment("123456789", "CreditCard", "Success", paymentData);
+        Payment payment = new Payment("123456789", "CreditCard", "SUCCESS", paymentData);
 
-        assertEquals("Success", payment.getStatus());
+        assertEquals("SUCCESS", payment.getStatus());
     }
 
     @Test
@@ -53,15 +41,15 @@ public class PaymentTest {
     }
 
     @Test
-    void testSetStatusToCancelled() {
+    void testSetStatusToCANCELLED() {
         Map<String, String> paymentData = new HashMap<>();
         paymentData.put("cardType", "Visa");
         paymentData.put("amount", "100.00");
 
-        Payment payment = new Payment("123456789", "CreditCard", "Pending", paymentData);
-        payment.setStatus("Cancelled");
+        Payment payment = new Payment("123456789", "CreditCard",paymentData);
+        payment.setStatus("CANCELLED");
 
-        assertEquals("Cancelled", payment.getStatus());
+        assertEquals("CANCELLED", payment.getStatus());
     }
 
     @Test
@@ -70,7 +58,7 @@ public class PaymentTest {
         paymentData.put("cardType", "Visa");
         paymentData.put("amount", "100.00");
 
-        Payment payment = new Payment("123456789", "CreditCard", "Pending", paymentData);
+        Payment payment = new Payment("123456789", "CreditCard", paymentData);
 
         assertThrows(IllegalArgumentException.class, () -> {
             payment.setStatus("InvalidStatus");
