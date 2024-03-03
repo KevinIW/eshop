@@ -128,5 +128,41 @@ Contoh: semua service memakai interface
 
 </details>
 
+<details>
+ <summary>Modul 4</summary>
+
+Reflection:
+
+1. Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”), whether this TDD flow is useful enough for you or not. If not, explain things that you need to do next time you make more tests.
+
+
+Menurut pendapat saya, TDD kurang begitu bagus karena alurnya yang aneh dan tidak logis. Semisal saat kita membuat test maka kita
+akan lebih fokus pada testingnya bukan fitur programnya. Dan juga menurut saya kurang efektif, karena kita harus memikirkan tentang membuat test dulu
+yang pada dasarnya manusia membuat kode dulu baru melakukan testing. Memang TDD membuat kencenderungan menghasilkan bug yang kecil
+namun karena pembuatan TDD yang rumit dan aneh maka saya lebih prefer untuk membuat kodingan terlebih dahulu.
+
+
+2. You have created unit tests in Tutorial. Now reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.
+
+Dari Principle F.I.R.S.T, 
+
+untuk F yaitu fast, saat kode di run hanya membutuhkan waktu kurang dari waktu 1 s serta tidak menggangu workflownya
+sehingga terpenuhi
+
+Untuk I yaitu Isolated/Independent, dari kode saya diatas ini test yang dibuat semua tidak ada yang bergantung pada
+method test case lainnya sehingga terpenuhi.
+
+Untuk R yaitu repeatable, bisa dibuktikan dengan menjalankan test beberapa kali dengan hasil yang sama yaitu passed semua maka terpenuhi
+
+Untuk S yaitu Self-Validating, semua test case saat menguji semua method ada yang memakai assertEqual atau assertNull atau
+assertThrow sesuai kebutuhan dan juga memenuhi semua kondisi untuk 1 method maka konsep ini juga terpenuhi
+
+Untuk T yaitu thorough/timely, setiap file di service, repository, dan model memiliki happy path dan unhappy path yang mengcover semua test case serta
+test case yang dibuat sudah minimal mungkin maka memenuhi hal ini.
+
+
+
+</details>
+
 
 
