@@ -13,15 +13,57 @@ public class PaymentServiceImpl implements PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @Override
-    public Payment addPayment(Order order, String method, Map<String, String> paymentData) {return null;}
+    public Payment addPayment(Order order, String method, Map<String, String> paymentData) {
+        if (method.equals("voucherCode") && paymentData.containsKey("voucherCode")) {
+            Payment payment = new Payment(
+                    String.valueOf(paymentRepository.findAll().size() + 1),
+                    method,
+                    paymentData
+            );
+            paymentRepository.save(payment);
+            return payment;
+        } else if (method.equals("bankTransfer")) {
+            if (!paymentData.isEmpty()) {
+                Payment payment = new Payment(
+                        String.valueOf(paymentRepository.findAll().size() + 1),
+                        method,
+                        paymentData
+                );
+                paymentRepository.save(payment);
+                return payment;
+            }
+        }
+        return null;
+    }
+
+
+
 
     @Override
-    public Payment setStatus(Payment payment, String status) {return null;}
+    public Payment addPayment(Payment payment) {
+        paymentRepository.save(payment);
+        return payment;
+    }
 
     @Override
-    public Payment getPayment(String id) {return null;}
+    public Payment setStatus(Payment payment, String status) {
+        Payment result = paymentRepository.findById(payment.getId());
+        if (result != null) {
+            Payment newPayment = new Payment(payment.getId(), payment.getMethod(),  status, payment.getPaymentData());
+            paymentRepository.save(newPayment);
+            return newPayment;
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
 
     @Override
-    public List<Payment> getAllPayment() {return null;}
+    public Payment getPayment(String id) {
+        return paymentRepository.findById(id);
+    }
+
+    @Override
+    public List<Payment> getAllPayment() {
+        return paymentRepository.findAll();
+    }
 }
